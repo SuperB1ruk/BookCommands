@@ -33,6 +33,7 @@ public class BCommands extends JavaPlugin implements Listener {
     @Override
     public void onEnable(){
         instance = this;
+        Bukkit.getPluginManager().registerEvents(this, this);
         UConfiguration.initialize(this);
         UConfiguration.writeResource("config.yml", "config.yml");
         if(UConfiguration.getBoolean("config.yml", "checkUpdates")){
@@ -70,7 +71,6 @@ public class BCommands extends JavaPlugin implements Listener {
                 getLogger().info("Invalid onJoin book \""+bk+"\"");
             }else{
                 OPEN_ON_JOIN_DELAY = UConfiguration.getLong("config.yml", "openOnJoinDelay");
-                Bukkit.getPluginManager().registerEvents(this, this);
             }
         }
         getLogger().info("Checking version...");
@@ -129,7 +129,7 @@ public class BCommands extends JavaPlugin implements Listener {
                 if(sender.hasPermission("bookcommands.showcommands")){ 
                     sender.sendMessage(UUtils.replaceColors("&e * * * * * * * * &6Команды"));
                     sender.sendMessage(UUtils.replaceColors(" &e/"+cmd.getName()+" open [КНИГА] &6- открыть меню книги (необходимо право bookcommands.open.[НАЗВАНИЕ ФАЙЛА КНИГИ БЕЗ .yml]"));
-                    if(sender.hasPermission("bookcommands.admin")) sender.sendMessage(UUtils.replaceColors(" &e/"+cmd.getName()+" reload &6- перезагрузить книги"));
+                    if(sender.hasPermission("bookcommands.admin")) sender.sendMessage(UUtils.replaceColors(" &e/"+cmd.getName()+" reload &6- перезагрузить конфигурацию и книги"));
                     //if(sender.hasPermission("bookcommands.admin")) sender.sendMessage(" &e/"+cmd.getName()+" update &6- обновить плагин (будет произведена перезагрузка плагина)");
                 }
                 sender.sendMessage(UUtils.replaceColors("&e * * * * * * * * *"));
@@ -162,7 +162,23 @@ public class BCommands extends JavaPlugin implements Listener {
                 if(args[0].equals("reload")){
                     if(sender.hasPermission("bookcommands.admin")){
                         loadBooks();
-                        sender.sendMessage(UUtils.replaceColors("&aКниги перезагружены."));
+                        OPEN_ON_JOIN = null;
+                        boolean ooje = UConfiguration.getBoolean("config.yml", "openOnJoinEnabled");
+                        if(ooje){
+                            String bk = UConfiguration.getString("config.yml", "openOnJoin");
+                            for(Book book : BOOKS){
+                                if(bk.equals(book.BOOK_NAME)){
+                                    OPEN_ON_JOIN = book;
+                                    break;
+                                }
+                            }
+                            if(OPEN_ON_JOIN == null){
+                                getLogger().info("Invalid onJoin book \""+bk+"\"");
+                            }else{
+                                OPEN_ON_JOIN_DELAY = UConfiguration.getLong("config.yml", "openOnJoinDelay");
+                            }
+                        }
+                        sender.sendMessage(UUtils.replaceColors("&aКонфигурация и книги перезагружены."));
                     }else{
                         sender.sendMessage(UUtils.replaceColors("&cУ вас нет доступа к этой команде."));
                     }

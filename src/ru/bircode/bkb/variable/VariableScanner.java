@@ -3,7 +3,6 @@ package ru.bircode.bkb.variable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class VariableScanner {
 
@@ -30,7 +29,7 @@ public class VariableScanner {
         int openerLength = opener.length();
         int closerLength = closer.length();
         String[] spl = target.split("");
-        int state = 0; // 0 - ищем открыватель; 1 - записываем содержимое переменной и ищем закрыватель
+        int state = 0;
         String strData = "";
         String varData = "";
         for(int i = 0; i < spl.length; i++){

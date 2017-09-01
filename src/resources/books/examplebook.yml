@@ -1,0 +1,18 @@
+pages:
+  page1: 
+    - '&8Привет. Это BookCommands.'
+    - '$CLEAR'
+    - '&8На что он способен?'
+    - 'Обычный текст'
+    - 'HoverText: ${hover>&2НАВЕДИ;&aСодержимое "ящика"}'
+    - 'URL: ${url_button>&2НАЖМИ;http://vk.com/mcbiruk}'
+    - 'HoverURL: ${hover_url_button>&2НАВЕДИ или НАЖМИ;&aНажатие на &2URL&a или &2HoverURL&a перенесёт вас на указанную ссылку, а то есть на страницу ВК разработчика;http://vk.com/mcbiruk}'
+    - 'CMD: ${command_button>&2НАЖМИ;me Чебурек}'
+    - 'HoverCMD: ${hover_command_button>&2НАВЕДИ или НАЖМИ;&2CMD&a и &2HoverCMD&a выполняют команду от имени игрока;me Беляш}'
+    - 'OpenBook: ${open_book>&2НАЖМИ&r&a;examplebook2}'
+    - 'HoverOpenBook: ${hover_open_book>&2НАВЕДИ или &2НАЖМИ;&2OpenBook&a и &2HoverOpenBook&a открывают указанную книжку, а то есть &lexamplebook2.yml;examplebook2}'
+    - '&2А теперь нажми на стрелку &2ниже'
+  page2: 
+    - '&cБОЖЕ МОЙ!'
+    - '&4&lЭТО ЖЕ ВТОРАЯ СТРАНИЦА!!!1'
+    - '&7ничего удивительного.'

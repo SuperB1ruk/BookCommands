@@ -1,0 +1,4 @@
+checkUpdates: true
+openOnJoinEnabled: false
+openOnJoin: examplebook
+openOnJoinDelay: 20

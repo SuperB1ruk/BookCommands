@@ -1,6 +1,6 @@
 name: BookCommands
 main: ru.bircode.bkb.BCommands
-version: 0.1
+version: 0.2
 author: B1ruk
 commands:
     bookcommands:

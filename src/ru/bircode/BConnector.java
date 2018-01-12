@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 public class BConnector {
     
     private final String IP, resourceName, resourceVersion;
-    private final String connectorURL = "http://connector.bircode.ru/";
+    private final String connectorURL = "https://connector.bircode.ru/";
     
     public BConnector(String resourceName, String resourceVersion){
         IP = Internet.fetchIP();
@@ -27,6 +27,7 @@ public class BConnector {
         request.addProperty("resourceVersion", resourceVersion);
         request.addProperty("ip", IP);
         String result = Internet.callURL(connectorURL, "noCrypt", "data="+request.toString());
+        System.out.println(result);
         return JSON.parse(result);
     }
     

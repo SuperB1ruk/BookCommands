@@ -24,7 +24,7 @@ public class BCommands extends JavaPlugin implements Listener {
 
     private static BConnector bConnector;
     private static VersionStatus VRS_ST = VersionStatus.UNKNOWN;
-    private static final String VERSION = "0.2";
+    private static final String VERSION = "0.3";
     public final List<Book> BOOKS = new ArrayList<>();
     private Book OPEN_ON_JOIN;
     private long OPEN_ON_JOIN_DELAY;

@@ -27,7 +27,6 @@ public class BConnector {
         request.addProperty("resourceVersion", resourceVersion);
         request.addProperty("ip", IP);
         String result = Internet.callURL(connectorURL, "noCrypt", "data="+request.toString());
-        System.out.println(result);
         return JSON.parse(result);
     }
     
